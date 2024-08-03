@@ -5,8 +5,10 @@ pipeline {
     stages {
         stage('Terraform Execution') {
             steps {
-                projectPath ='terraform/learning-basics/local/first-tf-code'
-                executeTerraform(projectPath,"${params.ACTION}")
+                script {
+                    projectPath ='terraform/learning-basics/local/first-tf-code'
+                    executeTerraform(projectPath,"${params.ACTION}")
+                }
             }
         }
     }
