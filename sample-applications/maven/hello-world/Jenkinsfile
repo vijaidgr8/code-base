@@ -6,7 +6,8 @@ pipeline {
         stage('Maven Builder Init') {
             steps {
                 script {
-                   buildMaven()
+                    appPath = 'sample-applications/maven/hello-world'
+                    buildMaven()
                 }
             }
         }
