@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sprint2
+  labels:
+    app: sprint2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sprint2-pod
+  template:
+    metadata:
+      labels:
+        app: sprint2-pod
+    spec:
+      containers:
+      - name: sprint2
+        image: dhpotnuru/sprint2barberapp:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+          - name: http
+            containerPort: 8235
+        resources:
+          limits:
+            cpu: 0.2
+            memory: "200Mi"
+
+---
+apiVersion: v1                  
+kind: Service                  
+metadata:                     
+  name: client                  
+  labels:                     
+    app: client             
+spec:                         
+  type: LoadBalancer                             
+  selector:
+    app: sprint2-pod                   
+  ports:                            
+  - name: http
+    port: 8235
+    targetPort: 8235
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

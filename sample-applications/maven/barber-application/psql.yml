@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment                    
+metadata:
+  name: sprint2-barber-postgres           
+  labels:                          
+    app: postgres-app
+spec:
+  selector:
+    matchLabels:                    
+      app: postgres-app
+      tier: postgres
+  strategy:
+    type: Recreate
+  template:                         
+    metadata:
+      labels:                       
+        app: postgres-app
+        tier: postgres
+    spec:                           
+      containers:
+      - image: postgres:9.6-alpine           
+        name: postgres
+        env:
+        - name: POSTGRES_DB
+          value: "Sprint2"
+        - name: POSTGRES_USER
+          value: "postgres"
+        - name: POSTGRES_PASSWORD
+          value: "dharani"
+        ports:
+        - containerPort: 5432 
+        resources:
+          limits:
+            cpu: 0.2
+            memory: "200Mi"
+
+---
+apiVersion: v1                    
+kind: Service                     
+metadata:
+  name: sprint2-barber-postgres        
+  labels:                        
+    app: postgres-app
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:                       
+    app: postgres-app
+    tier: postgres

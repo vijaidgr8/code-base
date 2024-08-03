@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  sprint2-barber-postgres:
+    image: "postgres:9.6-alpine"
+    container_name: sprint2-barber-postgres
+    volumes:
+      - barberapp-db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=Sprint2
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=dharani
+
+  barberapp:
+    image: dhpotnuru/sprint2barberapp:latest
+    container_name: sprintbarberapp
+    environment:
+      - DB_SERVER=sprint2-barber-postgres
+      - POSTGRES_DB=Sprint2
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=dharani
+    ports:
+      - 8235:8235
+    links:
+      - sprint2-barber-postgres
+volumes:
+  barberapp-db:
+  
+ 

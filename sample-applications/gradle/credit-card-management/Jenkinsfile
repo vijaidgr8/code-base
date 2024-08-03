@@ -1,0 +1,13 @@
+@Library('jenkins-shared-library@master') _
+
+pipeline {
+   agent any
+    stages {
+        stage('Gradle Build Execute') {
+            steps {
+                appPath = 'sample-applications/gradle/credit-card-management'
+                buildGradle(appPath)
+            }
+        }
+    }
+}

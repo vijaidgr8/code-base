@@ -1,0 +1,15 @@
+@Library('jenkins-shared-library@master') _
+
+pipeline {
+    agent any
+    stages {
+        stage('Maven Builder Init') {
+            steps {
+                script {
+                    appPath = 'sample-applications/maven/hello-world'
+                    buildMaven(appPath)
+                }
+            }
+        }
+    }
+}
