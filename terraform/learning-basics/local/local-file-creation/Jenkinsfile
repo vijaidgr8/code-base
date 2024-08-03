@@ -6,7 +6,7 @@ pipeline {
         stage('Terraform Execution') {
             steps {
                 script {
-                    projectPath ='terraform/learning-basics/local/first-tf-code'
+                    projectPath ='terraform/learning-basics/local/local-file-creation'
                     executeTerraform(projectPath,"${params.ACTION}")
                 }
             }
