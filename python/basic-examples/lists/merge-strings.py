@@ -11,4 +11,4 @@ if len(word1) > len(word2):
 elif len(word2) > len(word1):
     result += word2[pointer+1:]
     
-print(result)
+print(f"Merged string would be\n{result}")

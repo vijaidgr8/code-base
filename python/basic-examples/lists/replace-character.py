@@ -7,4 +7,6 @@ while (i < len(word1)):
     else:
         result += word1[i]
     i += 1
-print(result)
+
+print(f"Output Using Logic {result}")
+print(f"Output using function {word1.replace('i',"a")}")
