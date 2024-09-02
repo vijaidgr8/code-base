@@ -6,7 +6,7 @@ pipeline {
         stage('Gradle Build Execute') {
             steps {
                 script {
-                    appPath = 'sample-applications/gradle/credit-card-management'
+                    appPath = 'sample-applications-builders/gradle/credit-card-management'
                     buildGradle(appPath)
                 }
                 
