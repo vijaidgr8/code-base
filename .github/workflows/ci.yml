@@ -9,4 +9,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run a script
-        run: echo "Hello from self-hosted runner!"
+        run: echo "Hello from self-hosted runner at my first workspace."
