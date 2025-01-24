@@ -1,0 +1,20 @@
+name: Build Docker Image
+
+on:
+  push:
+    branches:
+      - master 
+    paths:
+      - 'docker/sample-apps/docker-basic-app/Dockerfile'
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: |
+          docker build -t sample-app-image:latest docker/sample-apps/docker-basic-app/
