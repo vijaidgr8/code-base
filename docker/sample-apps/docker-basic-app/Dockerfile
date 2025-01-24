@@ -5,7 +5,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-# Run tests to validate app
+# Run tests to validate app - this is a separate stage
 FROM node:12-alpine AS app-base
 RUN apk add --no-cache python g++ make
 WORKDIR /app
