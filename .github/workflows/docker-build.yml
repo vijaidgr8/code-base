@@ -9,7 +9,9 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    container:
+      image: docker
 
     steps:
       - name: Checkout code
